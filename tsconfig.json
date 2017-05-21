@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "build",
+    "baseUrl": "src",
+    "strict": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": [
+      "es2016"
+    ]
+  },
+  "include": [
+    "src"
+  ]
+}
