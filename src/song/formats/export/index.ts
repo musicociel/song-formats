@@ -1,5 +1,5 @@
 import {Song} from '../../song';
-import {FileFormat, Formats, processFormats} from '../index';
+import {FileFormat, Formats, processFormats, determineFormat} from '../index';
 import {musicocielExporter} from './musicociel';
 
 export interface FileExporter extends FileFormat {
@@ -7,3 +7,13 @@ export interface FileExporter extends FileFormat {
 }
 
 export const exporters = processFormats([musicocielExporter]);
+
+export const exportFile = (
+  song: Song,
+  fileName?: string,
+  formatName?: string,
+  defaultFormatName: string = 'musicociel'
+) => {
+  const exporter = determineFormat(exporters, defaultFormatName, fileName, formatName);
+  return exporter.exportFile(song);
+};

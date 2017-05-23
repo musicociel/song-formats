@@ -1,5 +1,5 @@
 import {Song} from '../../song';
-import {FileFormat, Formats, processFormats} from '../index';
+import {FileFormat, Formats, processFormats, determineFormat} from '../index';
 import {musicocielImporter} from './musicociel';
 import {openSongImporter} from './opensong';
 import {chordproImporter} from './chordpro';
@@ -38,3 +38,13 @@ export const importers = processFormats([
   chordproImporter,
   autoDetectImporter
 ]);
+
+export const importFile = (
+  fileContent,
+  fileName: string,
+  formatName?: string,
+  defaultFormatName: string = 'auto'
+) => {
+  const importer = determineFormat(importers, defaultFormatName, fileName, formatName);
+  return importer.importFile(fileContent);
+};

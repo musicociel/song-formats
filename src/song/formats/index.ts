@@ -27,10 +27,10 @@ export const processFormats = <T extends FileFormat>(formats: T[]): Formats<T> =
 
 const extensionRegExp = /\.[^\/\\\.]+$/;
 export const determineFormat = <T>(
-  fileName: string,
-  formatName: string,
   formats: Formats<T>,
-  defaultFormatName: string
+  defaultFormatName: string,
+  fileName?: string,
+  formatName?: string
 ): T => {
   let result;
   if (formatName) {
