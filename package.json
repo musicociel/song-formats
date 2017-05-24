@@ -1,7 +1,7 @@
 {
   "name": "@musicociel/song-formats",
   "description": "Library allowing to import/export songs between the Musicociel file format and other formats including Opensong and ChordPro.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "DivDE <divde@musicociel.fr>",
   "license": "AGPL-3.0",
   "scripts": {
