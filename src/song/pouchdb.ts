@@ -14,7 +14,7 @@ export interface SongPouchDBEntry {
 export function songToPouchDBEntry(song: Song): SongPouchDBEntry {
   const stringifiedSong = stringify(song);
   const hash = createHash('sha256').update(stringifiedSong, 'utf8').digest('hex');
-  const id = `song\u0000${diacritics.remove(song.title).toLowerCase()}\u0000${hash}`;
+  const id = `song\u0001${diacritics.remove(song.title).toLowerCase()}\u0001${hash}`;
   const lyrics = extractLyrics(song.music);
   return {
     _id: id,
