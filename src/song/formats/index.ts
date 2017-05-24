@@ -34,7 +34,7 @@ export const determineFormat = <T>(
 ): T => {
   let result;
   if (formatName) {
-    result = formats.byName[formatName];
+    result = formats.byName[formatName.toLowerCase()];
     if (!result) {
       throw new Error(`Invalid format: ${formatName}`);
     }
