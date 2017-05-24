@@ -81,7 +81,8 @@ export class PartBuilder {
     if (typeof chord === 'string') {
       const parsedChord = parseChord(chord);
       if (!parsedChord) {
-        throw new Error(`Invalid chord: ${chord}`);
+        // it is not a valid chord, let's add it as a comment
+        return this.addComments(chord);
       }
       chord = parsedChord.chord;
     }
