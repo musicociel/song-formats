@@ -168,3 +168,9 @@ export interface Song {
   copyright?: string;
   music: SheetMusic;
 }
+
+export interface SongPosition {
+  currentPart?: number;
+  currentLine?: number;
+  currentEvent?: number;
+}
