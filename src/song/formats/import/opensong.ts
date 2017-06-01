@@ -10,6 +10,7 @@ const getXMLTagContent = (doc, tag: string): string => {
 };
 
 const lyricsLineRegExp = /^[ 0-9]/;
+const emptyLineRegExp = /^\s*$/;
 // _  is used to align with chords (if chords take more place)
 // |  is used to insert a new line
 // || is used to insert a new slide
@@ -105,7 +106,7 @@ export const openSongImporter: FileImporter = {
     let lastChordLineUsage = 0;
     for (const curLine of lines) {
       const firstChar = curLine.charAt(0);
-      if (lyricsLineRegExp.test(firstChar)) {
+      if (lyricsLineRegExp.test(firstChar) && !emptyLineRegExp.test(curLine)) {
         let lyricsLine = curLine.substr(1);
         const currentLinePartName = firstChar === ' ' ? currentPartName : `${currentPartName}${firstChar}`;
         const currentLinePart = getPart(currentLinePartName);
