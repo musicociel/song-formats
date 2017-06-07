@@ -5,6 +5,7 @@
   "author": "DivDE <divde@musicociel.fr>",
   "license": "AGPL-3.0",
   "scripts": {
+    "semantic-release": "semantic-release",
     "watch": "tsc -p tsconfig.json --watch",
     "build": "tsc -p tsconfig.json",
     "prepare": "npm run build",
@@ -15,6 +16,7 @@
     "url": "https://github.com/musicociel/song-formats.git"
   },
   "devDependencies": {
+    "semantic-release": "^6.3.6",
     "typescript": "^2.3.2"
   },
   "dependencies": {

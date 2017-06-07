@@ -1,7 +1,19 @@
 language: node_js
 node_js:
- - "8"
-script: npm run test
+- '8'
+env:
+  global:
+    - secure: BHYY1qXf7zgyco4YmFUhX7Ja+cm2BlthFB2W1I6J4DLNSHfr/wZ4U4xIZcpm0tjBTL6NP2D9P9ALGeZRAq7baJU/cmIkk5Iyg084YdyJTheBVd5NDq3tzkiR+8K54YX1g7IUpsOFscgHJj/cxvGeViJSeESPG81FRjxnxcK1NKRy0fWtJPcbFG2HFyh8AMHPe74ahTbUQJHlqJTxR8Lk4TRhTjjUPR98cr8uq4TjWch/4r8PjsFXfKacSKjo1ZGNJUyp3PvnEBwoiPG7JLFi5wCV3TApHX7bJ9J2vNSdEVPnXNdVwwSyYpHocH8MpDD2/ceW1YjQL8S6567+w9pz58qS/6n7EgLHETsbp6sMaL844UvJSLP3ttN5dzBUwqG5xPqT5QTn34/n0Gl91QWDiYlP9sE7qSZjLLW7eG0oC04+us2Ta3ylq8CaCwXO0SBSWraiOoRw0RD6yF+vQuqXeGeXclaF2t4ZIb38a9b7eajRnloIqYylvjRth6/36iTq9QLD8CWeGEGX5Z6AFbh7m9BPxUGx/dk6NJsusf+pOA0dz90ffpZCRQNXKL75usqoxdKoUevz1mD4APw8AY6+hPvpQ7FiCNkZgPUSm2LvXt+sUshiYFOl+JDH2DPe4pC1s1LjK/mNT/ICWkBK5qcSQaeNThXZjJbbMRRcmGhGLMM=
+    - secure: S3TgMj5FDdcrLOCibMa5VyYmLfCcMSv6OlWig2meJYg2kp5gIV51mbfrU7GNTn3ws1WJ8hOYk+iK+4nK+0iLmH4tRdcsZm/yeLrS7mAh3Dt2ssBa+v2oZfVJhC8kMU8D2YCAy45X3KHdgCon3+PbVRHOZPXmbsNl9s+R3mFBiZa4I/Cjgni2+qeHtyl+3u1og/gk76ztD//lTABF5G1sZ1MQj9uftheULLWUqfDD9R31hQQxUl252p+n33b1bpmnNTqX8NtR6S9OJCQQdpxj0OodWIaN+e7hM1oZTsNQ5LEnDj3UZodpGvT2RksakfIAQvqH8MEU3obwrfPe10UxT+/NTGboDD9btg+ySJtSMstXxhOyB+d0DuRuXAhIyAkJ3ecL07hQeZyfOaF20EYJ5+LYpQvMI+DtTsEwT+993GU/qoiEWdJa1d3GJ3qBQgBCwOUj+7rVq8tr7LBcaj2Szim4ibBMJ20iMM4eY2+Ws8p5+gtE//sbWXRk8tvYzxsxx/Yw/ukVhiC1/+TH4o4HZTJev6/C7eMB2z1/kDvfNBL+OUWrGhvGK8hDlRLvuksJUYaE0OYyIGZ8YQ5Cza5i16oDRGW17o4qyQGiyGbCIWqXer++kqOzTcyeXekk1judjtzfz+2O+9OORhamaHoQGqM/9qQaiMEBM17Te0YrgSg=
 cache:
   directories:
   - node_modules
+before_deploy: npm run semantic-release pre
+after_deploy: npm run semantic-release post
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm publish
+  on:
+    repo: musicociel/song-formats
+    branch: master
